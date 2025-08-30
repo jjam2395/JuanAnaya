@@ -39,6 +39,7 @@ ng test --code-coverage
 
 and open the index html generated on \coverage example:
 
+```bash
 coverage/Chrome%20Headless%20139.0.0.0%20(Windows%2010)/index.html
-
+```
 
