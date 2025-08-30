@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+body {
+    background-color: #f4f6f9;
+}
+
+.error { 
+    color: #c03; 
+    font-size: .85rem; 
+}
+
+.btn { 
+    padding: .8rem 1.5rem; 
+    border: 1px solid #ddd; 
+    background: #f7f7f7; 
+    cursor: pointer; 
+}
+
+.btn--primary { 
+    background: #fdf1a4; 
+    color: #000; 
+    border-color: transparent; 
+
+    &[disabled]{
+        color: #999;
+    }
+}
+
+.error-message {
+  background-color: #fdecea;
+  color: #b71c1c;
+  border: 1px solid #f5c6cb;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .btn { 
+    padding: .4rem .5rem; 
+    border: 1px solid #ddd; 
+    background: #f7f7f7; 
+    cursor: pointer; 
+    font-size: 14px;
+  }
+  .btn--primary { 
+    background: #fdf1a4; 
+    color: #000; 
+    border-color: transparent; 
+
+    &[disabled]{
+        color: #999;
+    }
+  }
+}

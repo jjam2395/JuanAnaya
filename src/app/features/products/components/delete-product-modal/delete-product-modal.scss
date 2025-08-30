@@ -1,0 +1,34 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.deleteProductModal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 350px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+
+  &__message { margin: .5rem 0 4rem; }
+  &__actions {
+    display: flex;
+    justify-content: space-evenly;
+    gap: .5rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+  }
+  &__button{
+    width: 100%;
+    padding: .4rem 1rem;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+}

@@ -1,0 +1,115 @@
+
+.addProduct {
+  width: min(640px, 92vw);
+  background: #fff;
+  border-radius: .8rem;
+  box-shadow: 0 5px 25px rgba(0,0,0,.1);
+  outline: none;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-self: center;
+  max-height: 90vh;
+  margin-top: 3.5rem;
+
+
+  &__header {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    padding: 1rem 1.25rem; 
+    border-bottom: 2px solid #eee;
+  } 
+
+  &__body {
+    padding: 1rem 2.5rem; 
+    overflow: auto;
+    display: grid; 
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__footer {
+    display: flex; 
+    justify-content: center; 
+    gap: 4rem; 
+    margin-top: .5rem;
+    padding: 3rem;
+  }
+}
+
+.field { display: grid; gap: .35rem; }
+.grid { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+
+input, textarea, select {
+  border: 1px solid #ddd; border-radius: .5rem; padding: .55rem .7rem; font: inherit;
+}
+
+
+.icon { background: transparent; border: none; cursor: pointer; font-size: 1.1rem; }
+
+  
+@media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+
+  .addProduct {
+    width: 100vw;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto; 
+  }
+
+  .addProduct__header {
+    padding: .875rem 1rem;
+    border-bottom: 1px solid #eee;
+    h2 { font-size: 1.05rem; line-height: 1.25rem; text-align: center; }
+  }
+
+  .addProduct form {
+    display: contents;
+  }
+
+  .addProduct__body {
+    padding: 1rem;
+    overflow: auto;
+    display: grid;
+    gap: .85rem;
+    grid-template-columns: 1fr; 
+  }
+
+  .addProduct__footer {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    border-top: 1px solid #eee;
+    padding: .75rem 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: .75rem;
+
+    .field { margin: 0; }
+    .field > .btn { width: 100%; }
+  }
+
+  .field {
+    gap: .25rem;
+    label { font-size: .9rem; }
+  }
+
+  input, textarea, select {
+    padding: .6rem .75rem;
+    font-size: 1rem;
+  }
+
+  .error {
+    font-size: .85rem;
+    line-height: 1.1rem;
+  }
+}
+
+.addProduct__footer .btn {
+  padding: .6rem .9rem;
+}

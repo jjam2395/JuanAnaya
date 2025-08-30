@@ -1,0 +1,81 @@
+<table  class="products products--responsive">
+  <caption class="visually-hidden">Products list</caption>
+  <thead>
+    <tr>
+      <th scope="col">Logo</th>
+      <th scope="col">Nombre del Producto</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Fecha de Liberación</th>
+      <th scope="col" >Fecha de Revisión</th>
+      <th scope="col" class="products__actionsCol"></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="loading || debouncing; else dataRows">
+    <tr *ngFor="let s of [1,2,3,4,5]">
+      <td class="product__column"><div class="skeleton skeleton--circle"></div></td>
+      <td class="product__column"><div class="skeleton skeleton--text"></div></td>
+      <td class="product__column"><div class="skeleton skeleton--text"></div></td>
+      <td class="product__column"><div class="skeleton skeleton--text"></div></td>
+      <td class="product__column"><div class="skeleton skeleton--text"></div></td>
+      <td class="product__column"><div class="skeleton skeleton--text"></div></td>
+    </tr>
+  </tbody>
+  <ng-template #dataRows>
+    <tbody>
+      <tr *ngFor="let product of items">
+        <td class="product__column" data-label="Logo"><img [src]="product.logo" alt="product logo" height="36" width="36" /></td>
+        <td class="product__column" data-label="Nombre  del Producto" >{{product.name}}</td>
+        <td class="product__column" data-label="Descripción" >{{product.description}}</td>
+        <td class="product__column" data-label="Fecha de Liberación" >{{product.date_release | date:'dd/MM/yyyy'}}</td>
+        <td class="product__column" data-label="Fecha de Revisión" >{{product.date_revision | date:'dd/MM/yyyy' }}</td>
+        <td class="product__column products__actions">
+          <button
+            type="button"
+            class="kebab-btn"
+            aria-haspopup="menu"
+            aria-expanded="{{ openMenuId === product.id }}"
+            (click)="toggleMenu(product.id)"
+            (keydown.enter)="toggleMenu(product.id)"
+            (keydown.space)="toggleMenu(product.id)"
+          >
+            ⋮
+            <span class="visually-hidden">Abrir menú de acciones</span>
+          </button>
+          <ul
+            class="kebab-menu"
+            *ngIf="openMenuId === product.id"
+            role="menu"
+            [attr.aria-label]="'Acciones para ' + product.name"
+          >
+            <li role="none">
+              <button role="menuitem" (click)="onEdit(product.id)">Editar</button>
+            </li>
+            <li role="none">
+              <button role="menuitem" class="danger" (click)="onDelete(product)">Eliminar</button>
+            </li>
+          </ul>
+
+          <div class="products__actionsBar">
+            <button (click)="onEdit(product.id)">Editar</button>
+            <button class="danger" (click)="onDelete(product)">Eliminar</button>
+          </div>
+      </td>
+      </tr>
+    </tbody>
+  </ng-template>
+  <tfoot>
+    <tr>
+        <td colspan="4"> 
+            {{ results }} Resultados 
+        </td>
+        <td>
+            <select class="products__pageSize" [value]="pageSize" (change)="onSize($event)">
+                <option [value]="5">5</option>
+                <option [value]="10">10</option>
+                <option [value]="20">20</option>
+            </select>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+

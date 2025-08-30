@@ -1,0 +1,13 @@
+
+<div *ngIf="facade.error() as msg"  class="admin__Messages">
+    <span class="error-message">{{ msg }}</span> 
+</div>
+
+<app-add-product
+*ngIf="!facade.error()" 
+(save)="onSave($event)" 
+[mode]="mode"
+[checkId]="checkId"
+[model]="model()"
+></app-add-product> 
+

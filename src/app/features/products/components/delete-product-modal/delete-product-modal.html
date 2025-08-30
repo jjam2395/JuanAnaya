@@ -1,0 +1,9 @@
+  <div class="backdrop" *ngIf="open">
+    <div class="deleteProductModal">
+      <p class="deleteProductModal__message">{{ message }}</p>
+      <div class="deleteProductModal__actions">
+        <button class="btn deleteProductModal__button" (click)="canceling.emit()">Cancelar</button>
+        <button class="btn btn--primary deleteProductModal__button" (click)="confirm.emit()">Confirmar</button>
+      </div>
+    </div>
+  </div>

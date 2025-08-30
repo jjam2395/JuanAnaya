@@ -1,0 +1,40 @@
+
+<section class="products" aria-labelledby="products-table">
+      <header class="products__header">
+        <app-input-search 
+          [value]="facade.query()"
+          (valueChange)="facade.search($event)"
+          (debouncingChange)="onDebouncingChange($event)"
+          [debounceMs]="200"
+          [disabled]="facade.loading()"
+          placeholder="Search...">
+          
+        </app-input-search>
+        <button class="btn btn--primary" routerLink="add"> Añadir Producto</button>
+      </header>
+
+      <body class="products__tableWrap">
+        <div *ngIf="facade.loading()">Cargando…</div>
+        <div *ngIf="facade.error() as msg">{{ msg }}</div>
+
+        <app-products-table  
+          *ngIf="!facade.loading() && !facade.error()"
+          [items]="facade.items()" 
+          [results]="facade.total()" 
+          [pageSize]="facade.pageSize()" 
+          (sizeChange)="onSize($event)"
+          [loading]="facade.loading()"
+          [debouncing]="debouncing"
+          (edit)="goEdit($event)"
+          (remove)="confirmDelete($event)">
+        </app-products-table>
+      </body>
+  </section>
+
+  
+<app-delete-product-modal
+  [open]="confirmOpen()"
+  [message]="'¿Seguro que deseas eliminar ' + (pendingToDelete?.name ?? 'este producto') + '?'"
+  (confirm)="doDelete()"
+  (canceling)="cancelDelete()">
+</app-delete-product-modal>

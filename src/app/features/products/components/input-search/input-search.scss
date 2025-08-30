@@ -1,0 +1,7 @@
+.products {
+    &__searchBar, &__searchBar:focus-visible, &__searchBar:focus{
+        padding: .2rem;
+        border: 3px solid #eaebed !important;
+        border-radius: 8px;
+    }
+}
